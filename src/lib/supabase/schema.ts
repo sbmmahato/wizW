@@ -1,6 +1,7 @@
 import { boolean, integer, jsonb, pgTable, serial, text, timestamp, uuid } from "drizzle-orm/pg-core";
 // import { prices, subscription_status, users } from "../../../migrations/schema";
 import { sql } from "drizzle-orm";
+import { users } from "../../../migrations/schema";
 
 // export const subscriptions = pgTable("subscriptions", {
 // 	id: text("id").primaryKey().notNull(),
@@ -20,6 +21,7 @@ import { sql } from "drizzle-orm";
 // 	trial_end: timestamp("trial_end", { withTimezone: true, mode: 'string' }).default(sql`now()`),
 // });
 
+
 export const plans = pgTable('plan', {
 	id: serial('id').primaryKey(),
 	productId: integer('productId').notNull(),
@@ -36,4 +38,38 @@ export const plans = pgTable('plan', {
 	sort: integer('sort'),
   })
 
+  export const webhookEvents = pgTable('webhookEvent', {
+	id: integer('id').primaryKey(),
+	createdAt: timestamp('createdAt', { mode: 'date' }).notNull().defaultNow(),
+	eventName: text('eventName').notNull(),
+	processed: boolean('processed').default(false),
+	body: jsonb('body').notNull(),
+	processingError: text('processingError'),
+  })
+
+  export const subscriptions = pgTable('subscription', {
+	id: serial('id').primaryKey(),
+	lemonSqueezyId: text('lemonSqueezyId').unique().notNull(),
+	orderId: integer('orderId').notNull(),
+	name: text('name').notNull(),
+	email: text('email').notNull(),
+	status: text('status').notNull(),
+	statusFormatted: text('statusFormatted').notNull(),
+	renewsAt: text('renewsAt'),
+	endsAt: text('endsAt'),
+	trialEndsAt: text('trialEndsAt'),
+	price: text('price').notNull(),
+	isUsageBased: boolean('isUsageBased').default(false),
+	isPaused: boolean('isPaused').default(false),
+	subscriptionItemId: serial('subscriptionItemId'),
+	userId: uuid('userId')
+	  .notNull()
+	  .references(() => users.id),
+	planId: integer('planId')
+	  .notNull()
+	  .references(() => plans.id),
+  })
+
   export type NewPlan = typeof plans.$inferInsert;
+  export type NewWebhookEvent = typeof webhookEvents.$inferInsert;
+  export type NewSubscription = typeof subscriptions.$inferInsert;
