@@ -18,6 +18,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Suspense } from 'react'
 
 // import Logo from '../../../../public/cypresslogo.svg';
 import Loader from '@/components/global/Loader';
@@ -100,7 +101,7 @@ const Signup = () => {
 // };
 
 
-  return (
+  return (<Suspense>
     <Form {...form}>
       <form
         onChange={() => {
@@ -206,7 +207,7 @@ const Signup = () => {
           </>
         )}
       </form>
-    </Form>
+    </Form></Suspense>
   );
 };
 
