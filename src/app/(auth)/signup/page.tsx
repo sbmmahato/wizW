@@ -44,7 +44,7 @@ const SignUpFormSchema = z
     path: ['confirmPassword'],
   });
 
-const Signup = () => {
+const Signup1 = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [submitError, setSubmitError] = useState('');
@@ -101,7 +101,7 @@ const Signup = () => {
 // };
 
 
-  return (<Suspense>
+  return (
     <Form {...form}>
       <form
         onChange={() => {
@@ -207,8 +207,16 @@ const Signup = () => {
           </>
         )}
       </form>
-    </Form></Suspense>
+    </Form>
   );
 };
 
-export default Signup;
+// export default Signup;
+
+export function Signup(){
+  return (
+    <Suspense>
+      <Signup1 />
+    </Suspense>
+  )
+}
