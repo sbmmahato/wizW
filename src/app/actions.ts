@@ -1,6 +1,6 @@
 'use server'
 
-import crypto from "node:crypto";
+import crypto from "crypto";
 import { configureLemonSqueezy } from '@/config/lemonsqueezy'
 import { createCheckout, getPrice, getProduct, getSubscription, lemonSqueezySetup, listPrices, listProducts, updateSubscription, type Variant } from '@lemonsqueezy/lemonsqueezy.js'
 import {
