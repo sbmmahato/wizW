@@ -6,9 +6,9 @@ export const dynamic = 'force-dynamic'
 export default function BillingPage() {
   return (
     <div>
-      {/* <Suspense fallback={<p>Loading plans...</p>}> */}
+      <Suspense fallback={<p>Loading plans...</p>}>
         <Plans />
-      {/* </Suspense> */}
+      </Suspense>
     </div>
   )
 }
