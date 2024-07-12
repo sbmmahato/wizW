@@ -2,7 +2,7 @@
 
 import crypto from "node:crypto";
 import { configureLemonSqueezy } from '@/config/lemonsqueezy'
-import { createCheckout, getPrice, getProduct, lemonSqueezySetup, listPrices, listProducts, updateSubscription, type Variant } from '@lemonsqueezy/lemonsqueezy.js'
+import { createCheckout, getPrice, getProduct, getSubscription, lemonSqueezySetup, listPrices, listProducts, updateSubscription, type Variant } from '@lemonsqueezy/lemonsqueezy.js'
 import {
     plans,
     subscriptions,
@@ -132,9 +132,9 @@ export async function getCheckoutURL(variantId: number, embed = false) {
   const supabase = await createSupabaseServerClient();
   // const session = await supabase.auth.getUser();
   
-const { data: { user } } = await supabase.auth.getUser()
-
-  if (!user) {
+const { data: { user } } = await supabase.auth.getUser();
+console.log(user);
+  if (!user) {console.log(user)
     throw new Error("User is not authenticated.");
   }
 
@@ -369,4 +369,16 @@ export async function processWebhookEvent(webhookEvent: NewWebhookEvent) {
     revalidatePath("/");
   
     return updatedSub;
+  }
+
+
+  export async function getSubscriptionURLs(id: string) {
+    configureLemonSqueezy();
+    const subscription = await getSubscription(id);
+  
+    if (subscription.error) {
+      throw new Error(subscription.error.message);
+    }
+  
+    return subscription.data?.data.attributes.urls;
   }

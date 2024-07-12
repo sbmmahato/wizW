@@ -13,6 +13,7 @@ import {
 import { type NewPlan } from '@/lib/supabase/schema'
 import { changePlan, getCheckoutURL } from "@/app/actions";
 import { CheckIcon, PlusIcon } from 'lucide-react';
+import Script from 'next/script';
 declare global {
   interface Window {
     createLemonSqueezy:any;
@@ -50,11 +51,23 @@ export const SignupButton = forwardRef<ButtonElement, ButtonProps>(
         : "Sign up";
 
     // Make sure Lemon.js is loaded
-    useEffect(() => {
-      if (typeof window.createLemonSqueezy === "function") {
-        window.createLemonSqueezy();
-      }
-    }, []);
+    // useEffect(() => {
+    //   // if (typeof window.createLemonSqueezy === "function") {console.log(' ls func yup')
+    //     window.createLemonSqueezy()
+    //   // }
+    // }, []);
+
+    <Script src="https://app.lemonsqueezy.com/js/lemon.js" strategy="afterInteractive" onLoad={() => { window.createLemonSqueezy(); }} />
+
+    // const handleScriptReady = (): void => {
+    //   console.log("LemonSqueezy loading");
+    //   window.createLemonSqueezy();
+    //   console.log("LemonSqueezy loaded");
+    // };
+    // useEffect(()=>{
+    //   <Script src="https://app.lemonsqueezy.com/js/lemon.js" defer onReady={handleScriptReady} />
+    // },[]);
+    
 
     // eslint-disable-next-line no-nested-ternary -- disabled
     const before = loading ? (
@@ -72,27 +85,28 @@ export const SignupButton = forwardRef<ButtonElement, ButtonProps>(
         disabled={loading || isCurrent || props.disabled}
         onClick={async () => {
           // If changing plans, call server action.
-          if (isChangingPlans) {
-            if (!currentPlan?.id) {
-              throw new Error("Current plan not found.");
-            }
+          // if (isChangingPlans) {
+          //   if (!currentPlan?.id) {
+          //     throw new Error("Current plan not found.");
+          //   }
 
-            if (!plan.id) {
-              throw new Error("New plan not found.");
-            }
+          //   if (!plan.id) {
+          //     throw new Error("New plan not found.");
+          //   }
 
-            setLoading(true);
-            await changePlan(currentPlan.id, plan.id);
-            setLoading(false);
+          //   setLoading(true);
+          //   await changePlan(currentPlan.id, plan.id);
+          //   setLoading(false);
 
-            return;
-          }
+          //   return;
+          // }
 
           // Otherwise, create a checkout and open the Lemon.js modal.
           let checkoutUrl: string | undefined = "";
           try {
             setLoading(true);
             checkoutUrl = await getCheckoutURL(plan.variantId, embed);
+            console.log(checkoutUrl)
           } catch (error) {
             setLoading(false);
             toast("Error creating a checkout.", {

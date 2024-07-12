@@ -29,7 +29,7 @@ import { SearchXIcon } from "lucide-react";
 import { Alert } from "@lemonsqueezy/wedges";
 import { type NewPlan } from "@/lib/supabase/schema";
 import { cn, formatPrice } from "@/lib/utils";
-import { Section } from "../../../section";
+import { Section } from "../../../../app/section";
 import { SignupButton } from "./signup-button";
 
 export function Plan({
