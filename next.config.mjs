@@ -5,6 +5,6 @@
 
 module.exports = {
     externals: {
-        'node:crypto': 'commonjs crypto'
+        'node:crypto': 'es6 crypto'
     }
  }
