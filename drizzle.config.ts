@@ -7,6 +7,7 @@ if (!process.env.DATABASE_URL) {
 }
 
 export default {
+  schemaFilter: ["public"], //
     dialect:'postgresql',
   schema: './src/lib/supabase/schema.ts',
   out: './migrations',

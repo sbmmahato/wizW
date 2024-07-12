@@ -1,4 +1,4 @@
-import { pgTable, unique, pgEnum, serial, integer, text, boolean, timestamp, jsonb, foreignKey, uuid } from "drizzle-orm/pg-core"
+import { pgTable, unique, pgEnum, serial, integer, text, boolean, timestamp, jsonb, foreignKey, uuid, pgSchema } from "drizzle-orm/pg-core"
   import { sql } from "drizzle-orm"
 
 export const aal_level = pgEnum("aal_level", ['aal1', 'aal2', 'aal3'])
@@ -60,3 +60,15 @@ export const users = pgTable("users", {
 		}),
 	}
 });
+
+
+
+
+
+
+export const authSchema = pgSchema('auth');
+
+export const Users = authSchema.table('users', {
+    id: uuid('id').primaryKey(),
+});
+export const usersInAuth = Users;

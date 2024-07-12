@@ -70,6 +70,7 @@ export const plans = pgTable('plan', {
 	  .references(() => plans.id),
   })
 
+
   export type NewPlan = typeof plans.$inferInsert;
   export type NewWebhookEvent = typeof webhookEvents.$inferInsert;
   export type NewSubscription = typeof subscriptions.$inferInsert;
