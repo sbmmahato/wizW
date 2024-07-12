@@ -101,7 +101,7 @@ const Signup = () => {
 // };
 
 
-  return (
+  return (<Suspense>
     <Form {...form}>
       <form
         onChange={() => {
@@ -207,7 +207,7 @@ const Signup = () => {
           </>
         )}
       </form>
-    </Form>
+    </Form></Suspense>
   );
 };
 
