@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { PageTitle } from "./page-title";
+import  PageTitle  from "./page-title";
 
 export function DashboardContent(
   props: Readonly<{
