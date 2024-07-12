@@ -29,7 +29,7 @@ type ButtonProps = ComponentProps<typeof Button> & {
   plan: NewPlan;
 };
 
-export const SignupButton = forwardRef<ButtonElement, ButtonProps>(
+const SignupButton = forwardRef<ButtonElement, ButtonProps>(
   (props, ref) => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -128,3 +128,6 @@ export const SignupButton = forwardRef<ButtonElement, ButtonProps>(
     );
   },
 );
+
+SignupButton.displayName='SignupButton';
+export default SignupButton;

@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode, type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-export const PageTitle = forwardRef<
+const PageTitle = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement> & {
     action?: ReactNode;
@@ -27,3 +27,6 @@ export const PageTitle = forwardRef<
     </header>
   );
 });
+
+PageTitle.displayName ='PageTitle';
+export default PageTitle;
