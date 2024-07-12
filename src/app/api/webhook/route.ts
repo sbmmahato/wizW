@@ -1,4 +1,4 @@
-import crypto from 'node:crypto'
+import crypto from 'crypto'
 import { processWebhookEvent, storeWebhookEvent } from '@/app/actions'
 import { webhookHasMeta } from '@/lib/typeguards'
 
