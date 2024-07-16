@@ -213,7 +213,7 @@ const Signup1 = () => {
 
 // export default Signup;
 
-export function Signup(){
+export default function Signup(){
   return (
     <Suspense>
       <Signup1 />

@@ -1,6 +1,6 @@
 {
-  "id": "169f367e-3ec7-4e8c-b43a-53cf0b06202e",
-  "prevId": "13703ad0-5ea6-4ba4-aa1c-be058b30a249",
+  "id": "ff95b2d6-0798-4d72-8fdf-5e182d023a71",
+  "prevId": "6a41bf43-8d55-4dfc-b008-f65f3c4fe4b2",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -250,7 +250,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },

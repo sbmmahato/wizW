@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import { Suspense } from 'react'
 import { Plans } from '@/components/dashboard/billing/plans/plans'
 

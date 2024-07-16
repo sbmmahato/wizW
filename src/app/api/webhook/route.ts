@@ -24,6 +24,45 @@ export async function POST(request: Request) {
     throw new Error('Invalid signature.')
   }
 
+
+  
+
+  // const secretBuffer = new TextEncoder().encode(secret)
+  // const key = await crypto.subtle.importKey(
+  //   'raw',
+  //   secretBuffer,
+  //   { name: 'HMAC',
+  //     hash: { name: 'SHA-256' } },
+  //   false,
+  //   ['sign']
+  // )
+
+  // const rawBodyBuffer = new TextEncoder().encode(rawBody)
+  // const signature = await crypto.subtle.sign(
+  //   'HMAC',
+  //   key,
+  //   rawBodyBuffer
+  // )
+
+  // const hexSignature = Array.from(new Uint8Array(signature))
+  //   .map(b => b.toString(16).padStart(
+  //     2,
+  //     '0'
+  //   ))
+  //   .join('')
+  // const requestSignature = request.headers.get('X-Signature') ?? ''
+
+  // if (hexSignature !== requestSignature) {
+  //   return new Response(
+  //     'Invalid signature',
+  //     { status: 400 }
+  //   )
+  // }
+
+
+
+
+
   const data = JSON.parse(rawBody) as unknown
 
   // Type guard to check if the object has a 'meta' property.

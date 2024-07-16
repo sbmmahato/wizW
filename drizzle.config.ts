@@ -15,7 +15,7 @@ export default {
     url:process.env.DATABASE_URL || '',
     port:5432,
     database:'postgres',
-    user:'postgres.pgnqpkbmqigngossgbfp',
+    user:'postgres.fnfzpadcntmcjgdsqhwn',
     host:'aws-0-us-east-1.pooler.supabase.com',
     password:process.env.PW || ''
   }

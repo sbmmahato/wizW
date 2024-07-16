@@ -1,6 +1,7 @@
 'use server'
 
-import crypto from "crypto";
+// import crypto from "crypto";
+import {v4} from 'uuid';
 import { configureLemonSqueezy } from '@/config/lemonsqueezy'
 import { createCheckout, getPrice, getProduct, getSubscription, lemonSqueezySetup, listPrices, listProducts, updateSubscription, type Variant } from '@lemonsqueezy/lemonsqueezy.js'
 import {
@@ -285,7 +286,8 @@ export async function processWebhookEvent(webhookEvent: NewWebhookEvent) {
       throw new Error("POSTGRES_URL is not set");
     }
   
-    const id = crypto.randomInt(100000000, 1000000000);
+    // const id = crypto.randomInt(100000000, 1000000000);
+    const id = v4();
   
     const returnedValue = await db
       .insert(webhookEvents)

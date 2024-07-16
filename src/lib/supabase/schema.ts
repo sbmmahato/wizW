@@ -39,7 +39,7 @@ export const plans = pgTable('plan', {
   })
 
   export const webhookEvents = pgTable('webhookEvent', {
-	id: integer('id').primaryKey(),
+	id: uuid('id').primaryKey(),
 	createdAt: timestamp('createdAt', { mode: 'date' }).notNull().defaultNow(),
 	eventName: text('eventName').notNull(),
 	processed: boolean('processed').default(false),

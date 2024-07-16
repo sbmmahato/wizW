@@ -1,4 +1,4 @@
-import { pgTable, unique, pgEnum, serial, integer, text, boolean, timestamp, jsonb, foreignKey, uuid, pgSchema } from "drizzle-orm/pg-core"
+import { pgTable, unique, pgEnum, serial, integer, text, boolean, uuid, timestamp, jsonb, foreignKey, pgSchema } from "drizzle-orm/pg-core"
   import { sql } from "drizzle-orm"
 
 export const aal_level = pgEnum("aal_level", ['aal1', 'aal2', 'aal3'])
@@ -34,7 +34,7 @@ export const plan = pgTable("plan", {
 });
 
 export const webhookEvent = pgTable("webhookEvent", {
-	id: integer("id").primaryKey().notNull(),
+	id: uuid("id").primaryKey().notNull(),
 	createdAt: timestamp("createdAt", { mode: 'string' }).defaultNow().notNull(),
 	eventName: text("eventName").notNull(),
 	processed: boolean("processed").default(false),
@@ -60,8 +60,6 @@ export const users = pgTable("users", {
 		}),
 	}
 });
-
-
 
 
 

@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "plan" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "webhookEvent" (
-	"id" integer PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"eventName" text NOT NULL,
 	"processed" boolean DEFAULT false,
