@@ -14,12 +14,13 @@ import { type NewPlan } from '@/lib/supabase/schema'
 import { changePlan, getCheckoutURL } from "@/app/actions";
 import { CheckIcon, PlusIcon } from 'lucide-react';
 import Script from 'next/script';
-declare global {
-  interface Window {
-    createLemonSqueezy:any;
-    LemonSqueezy:any;
-  }
-}
+
+// declare global {
+//   interface Window {
+//     createLemonSqueezy:any;
+//     LemonSqueezy:any;
+//   }
+// }
 
 type ButtonElement = ElementRef<typeof Button>;
 type ButtonProps = ComponentProps<typeof Button> & {
@@ -57,7 +58,7 @@ const SignupButton = forwardRef<ButtonElement, ButtonProps>(
     //   // }
     // }, []);
 
-    <Script src="https://app.lemonsqueezy.com/js/lemon.js" strategy="afterInteractive" onLoad={() => { window.createLemonSqueezy(); }} />
+    // <Script src="https://app.lemonsqueezy.com/js/lemon.js" strategy="afterInteractive" onLoad={() => { window.createLemonSqueezy(); }} />
 
     // const handleScriptReady = (): void => {
     //   console.log("LemonSqueezy loading");
