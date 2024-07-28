@@ -50,9 +50,9 @@ export async function actionLoginUser({
           const result=await supabase.auth.signUp({
               email,
               password,
-              options: {
-                emailRedirectTo: 'http://localhost:3000/dashboard',
-              },
+              // options: {
+              //   emailRedirectTo: 'http://localhost:3000/dashboard',
+              // },
           });
           
           return JSON.stringify(result); //OR return JSON.stringify(result)

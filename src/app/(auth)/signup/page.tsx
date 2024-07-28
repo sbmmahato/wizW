@@ -75,8 +75,8 @@ const Signup1 = () => {
 
   const onSubmit = async ({ email, password }: z.infer<typeof FormSchema>) => {
     const result = await actionSignUpUser({ email, password }) as string;
-    // console.log('checking///////////');
-    // console.log(result);
+    console.log('checking///////////');
+    console.log(result);
     const {error}=JSON.parse(result);
     if (error) {
       setSubmitError(error.message);
@@ -211,12 +211,12 @@ const Signup1 = () => {
   );
 };
 
-// export default Signup;
+export default Signup1;
 
-export default function Signup(){
-  return (
-    <Suspense>
-      <Signup1 />
-    </Suspense>
-  )
-}
+// export default function Signup(){
+//   return (
+//     <Suspense>
+//       <Signup1 />
+//     </Suspense>
+//   )
+// }
