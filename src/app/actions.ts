@@ -157,7 +157,7 @@ console.log(user);
       },
       productOptions: {
         enabledVariants: [variantId],
-        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/billing/`,
+        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhook`,
         receiptButtonText: 'Go to Dashboard',
         receiptThankYouNote: 'Thank you for signing up to Lemon Stand!',
       },
