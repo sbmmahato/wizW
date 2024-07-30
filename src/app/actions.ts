@@ -157,7 +157,7 @@ console.log(user);
       },
       productOptions: {
         enabledVariants: [variantId],
-        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhook`,
+        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing/`,
         receiptButtonText: 'Go to Dashboard',
         receiptThankYouNote: 'Thank you for signing up to Lemon Stand!',
       },
@@ -166,6 +166,9 @@ console.log(user);
 
   return checkout.data?.data.attributes.url
 }
+
+
+
 
 
 
@@ -232,18 +235,18 @@ export async function processWebhookEvent(webhookEvent: NewWebhookEvent) {
 
         const updateData: NewSubscription = {
           lemonSqueezyId: eventBody.data.id,
-          orderId: attributes.order_id as number,
-          name: attributes.user_name as string,
-          email: attributes.user_email as string,
-          status: attributes.status as string,
-          statusFormatted: attributes.status_formatted as string,
-          renewsAt: attributes.renews_at as string,
-          endsAt: attributes.ends_at as string,
-          trialEndsAt: attributes.trial_ends_at as string,
+          orderId: eventBody.data.attributes.order_id as number,
+          name: eventBody.data.attributes.user_name as string,
+          email: eventBody.data.attributes.user_email as string,
+          status: eventBody.data.attributes.status as string,
+          statusFormatted: eventBody.data.attributes.status_formatted as string,
+          renewsAt: eventBody.data.attributes.renews_at as string,
+          endsAt: eventBody.data.attributes.ends_at as string,
+          trialEndsAt: eventBody.data.attributes.trial_ends_at as string,
           price: price?.toString() ?? '',
           isPaused: false,
-          subscriptionItemId: attributes.first_subscription_item.id,
-          isUsageBased: attributes.first_subscription_item.is_usage_based,
+          subscriptionItemId: eventBody.data.attributes.first_subscription_item.id,
+          isUsageBased: eventBody.data.attributes.first_subscription_item.is_usage_based,
           userId: eventBody.meta.custom_data.user_id,
           planId: plan[0].id,
         }
